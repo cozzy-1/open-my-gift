@@ -231,9 +231,15 @@
         function openVideoFullscreen(videoSrc) {
             const overlay = document.getElementById('videoOverlay');
             const videoElement = document.getElementById('fullscreenVideo');
+            
             videoElement.src = videoSrc;
+            
+            // Wait for the video to be ready before playing it
+            videoElement.addEventListener('canplay', () => {
+                videoElement.play();
+            }, { once: true }); // Use { once: true } to remove the listener after it fires
+
             overlay.classList.add('active');
-            videoElement.play();
         }
 
         function closeVideoFullscreen() {
@@ -246,4 +252,3 @@
     </script>
 </body>
 </html>
-
