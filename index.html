@@ -100,10 +100,16 @@
         <section class="mb-10">
             <h2 class="text-3xl md:text-4xl font-bold text-center text-pink-500 mb-6">A Video To Click...</h2>
             <div class="video-container">
-                <video controls loop muted playsinline controls class="w-full h-full" poster="if ur happy.mp4">
+                <video id="video1" controls loop muted playsinline class="w-full h-full" poster="if ur happy.mp4">
                     <source src="hanuni2.MP4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
+            </div>
+            <!-- Custom Fullscreen Button for the first video -->
+            <div class="text-center mt-4">
+                <button onclick="toggleFullscreen('video1')" class="bg-pink-500 text-white font-bold py-2 px-6 rounded-full hover:bg-pink-600 transition-colors">
+                    View Fullscreen
+                </button>
             </div>
         </section>
 
@@ -131,10 +137,16 @@
         <section class="mb-10">
             <h2 class="text-3xl md:text-4xl font-bold text-center text-pink-500 mb-6">A Video To Click...</h2>
             <div class="video-container">
-                <video controls loop muted controls playsinline  class="w-full h-full" poster="if ur happy.mp4">
+                <video id="video2" controls loop muted playsinline class="w-full h-full" poster="if ur happy.mp4">
                     <source src="if ur happy.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
+            </div>
+            <!-- Custom Fullscreen Button for the second video -->
+            <div class="text-center mt-4">
+                <button onclick="toggleFullscreen('video2')" class="bg-pink-500 text-white font-bold py-2 px-6 rounded-full hover:bg-pink-600 transition-colors">
+                    View Fullscreen
+                </button>
             </div>
         </section>
         <p>Happy birthday yene qonjo.wish u all of the best things in life. Ahun menor lejemeri new 😁😁 ur no longer a teenager so take care for ur actions ሊጸጽትሽ yemichelu negerochen atargi and also if u want any guidance am there for you. Arogit honkubesha😁😁 whatever happy birthday am happy for ur existence love ya🫶🫶.</p>
@@ -174,7 +186,22 @@
             const overlay = document.getElementById('imageOverlay');
             overlay.classList.remove('active');
         }
+
+        // Custom function to toggle fullscreen for a video
+        function toggleFullscreen(videoId) {
+            const video = document.getElementById(videoId);
+            if (video) {
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if (video.mozRequestFullScreen) { /* Firefox */
+                    video.mozRequestFullScreen();
+                } else if (video.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                    video.webkitRequestFullscreen();
+                } else if (video.msRequestFullscreen) { /* IE/Edge */
+                    video.msRequestFullscreen();
+                }
+            }
+        }
     </script>
 </body>
 </html>
-
